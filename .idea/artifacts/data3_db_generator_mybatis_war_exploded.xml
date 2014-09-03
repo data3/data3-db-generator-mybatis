@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="data3-db-generator-mybatis:war exploded">
+    <output-path>$PROJECT_DIR$/target/data3-db-generator-mybatis</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="data3-db-generator-mybatis/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="data3-db-generator-mybatis" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.2.7" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

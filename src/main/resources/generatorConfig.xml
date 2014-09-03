@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+
+<generatorConfiguration>
+    <properties resource="generatorConfig.properties"/>
+    <!--数据库驱动jar -->
+    <classPathEntry location="${classPathEntry.location}"/>
+
+    <context id="OrmUC" targetRuntime="${context.targetRuntime}">
+        <!--注释开关 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="false"/>
+            <property name="suppressDate" value="true" />
+        </commentGenerator>
+
+        <!--数据库连接 -->
+        <jdbcConnection driverClass="${jdbcConnection.driverClass}"
+                        connectionURL="${jdbcConnection.connectionURL}"
+                        userId="${jdbcConnection.userId}"
+                        password="${jdbcConnection.password}">
+        </jdbcConnection>
+        <!--默认false
+           Java type resolver will always use java.math.BigDecimal if the database column is of type DECIMAL or NUMERIC.
+         -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!--生成实体类 指定包名 以及生成的地址 （可以自定义地址，但是路径不存在不会自动创建  使用Maven生成在target目录下，会自动创建） -->
+        <javaModelGenerator targetPackage="com.data3.my.uc.model" targetProject="MAVEN">
+            <property name="enableSubPackages" value="false"/>
+            <property name="trimStrings" value="true"/>
+            <property name="rootClass" value="com.data3.my.base.po.BasePo"/>
+        </javaModelGenerator>
+        <!--生成SQLMAP文件 -->
+        <sqlMapGenerator targetPackage="com.data3.my.uc.persistence.mybatis" targetProject="MAVEN">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+        <!--生成Dao文件 可以配置 type="XMLMAPPER"生成xml的dao实现  context id="DB2Tables" 修改targetRuntime="MyBatis3"  -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.data3.my.uc.persistence.dao" targetProject="MAVEN">
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+
+        <!--对应数据库表 mysql可以加入主键自增 字段命名 忽略某字段等-->
+        <table tableName="t_uc_user" domainObjectName="User">
+            <generatedKey column="f_id" sqlStatement="JDBC"/>
+            <columnRenamingRule searchString="^f_" replaceString=""/>
+        </table>
+
+    </context>
+
+    <context id="OrmMC" targetRuntime="${context.targetRuntime}">
+        <!--注释开关 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="false"/>
+            <property name="suppressDate" value="true" />
+        </commentGenerator>
+
+        <!--数据库连接 -->
+        <jdbcConnection driverClass="${jdbcConnection.driverClass}"
+                        connectionURL="${jdbcConnection.connectionURL}"
+                        userId="${jdbcConnection.userId}"
+                        password="${jdbcConnection.password}">
+        </jdbcConnection>
+        <!--默认false
+           Java type resolver will always use java.math.BigDecimal if the database column is of type DECIMAL or NUMERIC.
+         -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!--生成实体类 指定包名 以及生成的地址 （可以自定义地址，但是路径不存在不会自动创建  使用Maven生成在target目录下，会自动创建） -->
+        <javaModelGenerator targetPackage="com.data3.mc.model" targetProject="MAVEN">
+            <property name="enableSubPackages" value="false"/>
+            <property name="trimStrings" value="true"/>
+            <property name="rootClass" value="com.data3.my.base.po.BasePo"/>
+        </javaModelGenerator>
+        <!--生成SQLMAP文件 -->
+        <sqlMapGenerator targetPackage="com.data3.mc.persistence.mybatis" targetProject="MAVEN">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+        <!--生成Dao文件 可以配置 type="XMLMAPPER"生成xml的dao实现  context id="DB2Tables" 修改targetRuntime="MyBatis3"  -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.data3.mc.persistence.dao" targetProject="MAVEN">
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+
+        <!--对应数据库表 mysql可以加入主键自增 字段命名 忽略某字段等-->
+        <table tableName="t_mc_application" domainObjectName="Application">
+            <generatedKey column="f_id" sqlStatement="JDBC"/>
+            <columnRenamingRule searchString="^f_" replaceString=""/>
+        </table>
+        <table tableName="t_mc_corp" domainObjectName="Corp">
+            <generatedKey column="f_id" sqlStatement="JDBC"/>
+            <columnRenamingRule searchString="^f_" replaceString=""/>
+        </table>
+        <table tableName="t_mc_corp_profile" domainObjectName="CorpProfile">
+            <generatedKey column="f_id" sqlStatement="JDBC"/>
+            <columnRenamingRule searchString="^f_" replaceString=""/>
+        </table>
+        <table tableName="t_mc_invite" domainObjectName="Invite">
+            <generatedKey column="f_id" sqlStatement="JDBC"/>
+            <columnRenamingRule searchString="^f_" replaceString=""/>
+        </table>
+        <table tableName="t_mc_log" domainObjectName="Log">
+            <generatedKey column="f_id" sqlStatement="JDBC"/>
+            <columnRenamingRule searchString="^f_" replaceString=""/>
+        </table>
+        <table tableName="t_mc_menu" domainObjectName="Menu">
+            <generatedKey column="f_id" sqlStatement="JDBC"/>
+            <columnRenamingRule searchString="^f_" replaceString=""/>
+        </table>
+        <table tableName="t_mc_menu_attr" domainObjectName="MenuAttr">
+            <generatedKey column="f_id" sqlStatement="JDBC" identity="true"/>
+            <columnRenamingRule searchString="^f_" replaceString=""/>
+        </table>
+        <table tableName="t_mc_operation" domainObjectName="Operation">
+            <generatedKey column="f_id" sqlStatement="JDBC" identity="true"/>
+            <columnRenamingRule searchString="^f_" replaceString=""/>
+        </table>
+        <table tableName="t_mc_privilege" domainObjectName="Privilege">
+            <generatedKey column="f_id" sqlStatement="JDBC" identity="true"/>
+            <columnRenamingRule searchString="^f_" replaceString=""/>
+        </table>
+        <table tableName="t_mc_resource" domainObjectName="Resource">
+            <generatedKey column="f_id" sqlStatement="JDBC" identity="true"/>
+            <columnRenamingRule searchString="^f_" replaceString=""/>
+        </table>
+        <table tableName="t_mc_role" domainObjectName="Role">
+            <generatedKey column="f_id" sqlStatement="JDBC" identity="true"/>
+            <columnRenamingRule searchString="^f_" replaceString=""/>
+        </table>
+        <table tableName="t_mc_role_priv" domainObjectName="RolePriv">
+            <generatedKey column="f_id" sqlStatement="JDBC" identity="true"/>
+            <columnRenamingRule searchString="^f_" replaceString=""/>
+        </table>
+        <table tableName="t_mc_user_corp" domainObjectName="UserCorp">
+            <generatedKey column="f_id" sqlStatement="JDBC" identity="true"/>
+            <columnRenamingRule searchString="^f_" replaceString=""/>
+        </table>
+
+    </context>
+    <context id="OrmMCNode" targetRuntime="${context.targetRuntime}">
+        <!--注释开关 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="false"/>
+            <property name="suppressDate" value="true" />
+        </commentGenerator>
+
+        <!--数据库连接 -->
+        <jdbcConnection driverClass="${jdbcConnection.driverClass}"
+                        connectionURL="${jdbcConnection.connectionURL}"
+                        userId="${jdbcConnection.userId}"
+                        password="${jdbcConnection.password}">
+        </jdbcConnection>
+        <!--默认false
+           Java type resolver will always use java.math.BigDecimal if the database column is of type DECIMAL or NUMERIC.
+         -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!--生成实体类 指定包名 以及生成的地址 （可以自定义地址，但是路径不存在不会自动创建  使用Maven生成在target目录下，会自动创建） -->
+        <javaModelGenerator targetPackage="com.data3.mc.node.model" targetProject="MAVEN">
+            <property name="enableSubPackages" value="false"/>
+            <property name="trimStrings" value="true"/>
+            <property name="rootClass" value="com.data3.my.base.po.BasePo"/>
+        </javaModelGenerator>
+        <!--生成SQLMAP文件 -->
+        <sqlMapGenerator targetPackage="com.data3.mc.node.persistence.mybatis" targetProject="MAVEN">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+        <!--生成Dao文件 可以配置 type="XMLMAPPER"生成xml的dao实现  context id="DB2Tables" 修改targetRuntime="MyBatis3"  -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.data3.mc.node.persistence.dao" targetProject="MAVEN">
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+
+        <!--对应数据库表 mysql可以加入主键自增 字段命名 忽略某字段等-->
+        <table tableName="t_mc_category" domainObjectName="Category">
+            <generatedKey column="f_id" sqlStatement="JDBC" identity="true"/>
+            <columnRenamingRule searchString="^f_" replaceString=""/>
+        </table>
+        <table tableName="t_mc_category_spec" domainObjectName="CategorySpec">
+            <generatedKey column="f_id" sqlStatement="JDBC" identity="true"/>
+            <columnRenamingRule searchString="^f_" replaceString=""/>
+        </table>
+        <table tableName="t_mc_category_spec_value" domainObjectName="CategorySpecValue">
+            <generatedKey column="f_id" sqlStatement="JDBC" identity="true"/>
+            <columnRenamingRule searchString="^f_" replaceString=""/>
+        </table>
+        <table tableName="t_mc_commodity" domainObjectName="Commodity">
+            <generatedKey column="f_id" sqlStatement="JDBC" identity="true"/>
+            <columnRenamingRule searchString="^f_" replaceString=""/>
+        </table>
+        <table tableName="t_mc_commodity_category" domainObjectName="CommodityCategory">
+            <generatedKey column="f_id" sqlStatement="JDBC" identity="true"/>
+            <columnRenamingRule searchString="^f_" replaceString=""/>
+        </table>
+        <table tableName="t_mc_commodity_category_spec" domainObjectName="CommodityCategorySpec">
+            <generatedKey column="f_id" sqlStatement="JDBC" identity="true"/>
+            <columnRenamingRule searchString="^f_" replaceString=""/>
+        </table>
+        <table tableName="t_mc_organization" domainObjectName="Organization">
+            <generatedKey column="f_id" sqlStatement="JDBC" identity="true"/>
+            <columnRenamingRule searchString="^f_" replaceString=""/>
+        </table>
+        <table tableName="t_mc_sales_order" domainObjectName="SalesOrder">
+            <generatedKey column="f_id" sqlStatement="JDBC" identity="true"/>
+            <columnRenamingRule searchString="^f_" replaceString=""/>
+        </table>
+        <table tableName="t_mc_sales_order_detail" domainObjectName="SalesOrderDetail">
+            <generatedKey column="f_id" sqlStatement="JDBC" identity="true"/>
+            <columnRenamingRule searchString="^f_" replaceString=""/>
+        </table>
+        <table tableName="t_mc_user_org" domainObjectName="UserOrg">
+            <generatedKey column="f_id" sqlStatement="JDBC" identity="true"/>
+            <columnRenamingRule searchString="^f_" replaceString=""/>
+        </table>
+        <table tableName="t_mc_user_role" domainObjectName="UserRole">
+            <generatedKey column="f_id" sqlStatement="JDBC" identity="true"/>
+            <columnRenamingRule searchString="^f_" replaceString=""/>
+        </table>
+    </context>
+</generatorConfiguration>
